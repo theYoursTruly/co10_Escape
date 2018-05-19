@@ -1,35 +1,6 @@
-diag_log format["initPlayerLocal run for %1 (prewaituntil)", name player];
-
-waituntil{!isNull(player)};
-//Clientside Stuff
-//call compile preprocessFile "Revive\reviveInit.sqf";
-
-diag_log format["initPlayerLocal run for %1", name player];
-
-[] spawn {
-	disableSerialization;
-	waitUntil {!isNull(findDisplay 46)};
-	(findDisplay 46) displayAddEventHandler ["keyDown", "_this call a3e_fnc_KeyDown"];
-};
-titleText ["Loading...", "BLACK",0.1];
-
-AT_Revive_StaticRespawns = [];
-AT_Revive_enableRespawn = false;
-AT_Revive_clearedDistance = 0;
-AT_Revive_Camera = 1;
-
-if(isClass(configFile >> "CfgPatches" >> "ACE_Medical")) then {
-    ace_medical_level = 1;
-    ace_medical_medicSetting = 1;
-    ace_medical_litterCleanUpDelay = 300;
-    ace_medical_playerDamageThreshold = 1.5;
-    ace_medical_painCoefficient = 1.2;
-} else {
-call ATR_FNC_ReviveInit;
-};
-
-call compile preprocessFile "Scripts\AT\dronehack_init.sqf";
-[] call A3E_fnc_addUserActions;
+player setCaptive true;
+hintSilent parseText("<t color='#00ff00' size='1.2'>Spawn protection ON</t>");
+player setPos getPos (leader group player);
 
 //BIS
 player unassignItem "ItemMap";
@@ -99,37 +70,32 @@ player assignItem "ItemRadio";
 player addItem "ItemWatch";
 player assignItem "ItemWatch";
 
-drn_fnc_Escape_DisableLeaderSetWaypoints = {
-	if (!visibleMap) exitwith {};
-	
-	{
-		player groupSelectUnit [_x, false]; 
-	} foreach units group player;
-};
+deleteVehicle (_this select 1);
 
-// If multiplayer, then disable the cheating "move to" waypoint feature.
-if (isMultiplayer) then {
-	[] spawn {
-		waitUntil {!isNull(findDisplay 46)}; 
-		// (findDisplay 46) displayAddEventHandler ["KeyDown","_nil=[_this select 1] call drn_fnc_Escape_DisableLeaderSetWaypoints"];
-		(findDisplay 46) displayAddEventHandler ["MouseButtonDown","_nil=[_this select 1] call drn_fnc_Escape_DisableLeaderSetWaypoints"];
-	};
-};
+call compile preprocessFile "Scripts\AT\dronehack_init.sqf";
+[] call A3E_fnc_addUserActions;
+if !(isClass(configFile >> "CfgPatches" >> "ACE_Medical")) then { call ATR_FNC_ReviveInit; };
 
-if(isNil "tft_lights_instance") then {
-    tft_lights_instance = '#lightpoint' createVehicleLocal [worldSize/2,worldSize/2,25000]; 
-    tft_lights_instance setLightDayLight false; 
-    tft_lights_instance setLightAttenuation [worldSize*sqrt 2,1,1e-4,0]; 
-    tft_lights_instance setLightBrightness 0.12; 
-    tft_lights_instance setLightColor [0.3, 0.4, 0.8]; 
-    tft_lights_instance setLightAmbient [0.02, 0.02, 0.02];
-};
-setViewDistance 5000;
-setObjectViewDistance 2500;
+sleep 1;
+
+player addMagazineGlobal "11Rnd_45ACP_Mag";
+player addMagazineGlobal "11Rnd_45ACP_Mag";
+player addMagazineGlobal "11Rnd_45ACP_Mag";
+sleep 0.5;
+player addWeaponGlobal "hgun_Pistol_heavy_01_F";
+
+player linkItem "ItemRadio";
+player linkItem "ItemWatch";
 
 if (isClass(configFile >> "CfgPatches" >> "ACE_Hearing")) then {
     player addItem "ACE_EarPlugs";
 };
+
+ace_map_BFT_Enabled = false;
+ace_spectator_filterUnits = 2;      //playable only
+ace_spectator_filterSides = 1;      //friendly
+ace_spectator_restrictModes = 1;    //follow unit only
+
 if (isClass(configFile >> "CfgPatches" >> "ACE_Medical")) then {
     _ACE_Items = ["ACE_atropine","ACE_fieldDressing","ACE_elasticBandage","ACE_quikclot","ACE_bloodIV","ACE_bloodIV_500","ACE_bloodIV_250","ACE_bodyBag","ACE_epinephrine","ACE_morphine","ACE_packingBandage","ACE_personalAidKit","ACE_plasmaIV","ACE_plasmaIV_500","ACE_plasmaIV_250","ACE_salineIV","ACE_salineIV_500","ACE_salineIV_250","ACE_surgicalKit","ACE_tourniquet"];
     {player removeItems _x} forEach _ACE_Items;
@@ -161,37 +127,12 @@ if (isClass(configFile >> "CfgPatches" >> "ACE_Medical")) then {
         };
     };
 };
+
 if (isClass(configFile >> "CfgPatches" >> "ACE_common")) then {
-    if (str player in ["p3","p4"]) then {player setVariable ["ACE_isEOD",true];player setVariable ["ACE_isEngineer",true];};
-    if (str player in ["p9","p10"]) then {player setVariable ["ACE_medical_medicClass", 2, true];};
+    if (str player in ["p3", "p4"]) then {player setVariable ["ACE_isEOD",true];player setVariable ["ACE_isEngineer",true];};
+    if (str player in ["p9", "p10"]) then {player setVariable ["ACE_medical_medicClass", 2, true];};
 };
 
-ace_map_BFT_Enabled = false;
-ace_spectator_filterUnits = 2;      //playable only
-ace_spectator_filterSides = 1;      //friendly
-ace_spectator_restrictModes = 1;    //follow unit only
-
-
-waituntil{sleep 0.1;!isNil("A3E_ParamsParsed")};
-AT_Revive_Camera = Param_ReviveView;
-
-
-[] spawn {
-	disableSerialization;
-	waitUntil {!isNull(findDisplay 46)};
-	(findDisplay 46) displayAddEventHandler ["keyDown", "_this call a3e_fnc_KeyDown"];
-};
-player setvariable["A3E_PlayerInitializedLocal",true,true];
-waituntil{sleep 0.1;(!isNil("A3E_FenceIsCreated") && !isNil("A3E_StartPos") && (player getvariable["A3E_PlayerInitializedServer",false]))};
-
-sleep 1.0;
-
-diag_log format["Escape debug: %1 is now ready (clientside).", name player];
-
-titleFadeOut 1;
-sleep 2;
-["Somewhere on", A3E_WorldName , str (date select 2) + "/" + str (date select 1) + "/" + str (date select 0) + " " + str (date select 3) + ":00"] spawn BIS_fnc_infoText;
-
-waituntil{sleep 0.5;!isNil("A3E_EscapeHasStarted")};
-
+sleep 5;
 player setCaptive false;
+hintSilent parseText("<t color='#ff0000' size='1.2'>Spawn protection OFF</t>");

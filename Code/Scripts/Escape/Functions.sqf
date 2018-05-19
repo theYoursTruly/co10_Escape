@@ -21,8 +21,8 @@ drn_fnc_Escape_OnSpawnGeneralSoldierUnit = {
 	_this setskill ["aimingaccuracy", _AISkill]; 
 	_this setskill ["aimingshake", _AISkill]; 
 	_this setskill ["spottime", _AISkill];
-	_this setskill ["commanding", _AISkill];
-	/*_this setskill ["general", 0.3];
+	_this setskill ["commanding", 0.8];
+	/*_this setskill ["general", 0.9];
 	_this setskill ["aimingspeed", 0.1];
 	_this setskill ["spotdistance", 0.2];
 	_this setskill ["aimingaccuracy", 0.2]; 

@@ -2,7 +2,7 @@
 	"Code" : "./Code",
 	"BuildDir" : "./Build",
 	"Missionname" : "co10_Escape",
-	"cpbo" : "S:\\ArmA3Work\\Tools\\cpbo\\cpbo.exe",
+	"cpbo" : "./cpbo.exe",
 	"replace" :
 		{
 			"VERSION" : "1.9.0",
@@ -27,7 +27,7 @@
 					"PLAYERUNIT_5" : "B_Soldier_GL_F",
 					"PLAYERUNIT_6" : "B_soldier_AR_F",
 					"PLAYERUNIT_7" : "B_soldier_LAT_F",
-					"PLAYERUNIT_8" : "B_Soldier_A_F",
+					"PLAYERUNIT_8" : "B_medic_F",
 					"PLAYERUNIT_9" : "B_soldier_M_F",
 					"PLAYERUNIT_10" : "B_medic_F"
 				}
@@ -47,7 +47,7 @@
 					"PLAYERUNIT_5" : "B_T_Soldier_GL_F",
 					"PLAYERUNIT_6" : "B_T_soldier_AR_F",
 					"PLAYERUNIT_7" : "B_T_soldier_LAT_F",
-					"PLAYERUNIT_8" : "B_T_Soldier_A_F",
+					"PLAYERUNIT_8" : "B_T_medic_F",
 					"PLAYERUNIT_9" : "B_T_soldier_M_F",
 					"PLAYERUNIT_10" : "B_T_medic_F"
 				}
@@ -67,7 +67,7 @@
 					"PLAYERUNIT_5" : "AT_Soldier_GL_B",
 					"PLAYERUNIT_6" : "AT_Soldier_AR_B",
 					"PLAYERUNIT_7" : "AT_Soldier_LAT_B",
-					"PLAYERUNIT_8" : "AT_Soldier_Explosives_B",
+					"PLAYERUNIT_8" : "AT_Soldier_Medic_B",
 					"PLAYERUNIT_9" : "AT_Soldier_Marksman_B",
 					"PLAYERUNIT_10" : "AT_Soldier_Medic_B"
 				}
@@ -87,7 +87,7 @@
 					"PLAYERUNIT_5" : "AT_Soldier_Desert_GL_B",
 					"PLAYERUNIT_6" : "AT_Soldier_Desert_AR_B",
 					"PLAYERUNIT_7" : "AT_Soldier_Desert_LAT_B",
-					"PLAYERUNIT_8" : "AT_Soldier_Desert_Explosives_B",
+					"PLAYERUNIT_8" : "AT_Soldier_Desert_Medic_B",
 					"PLAYERUNIT_9" : "AT_Soldier_Desert_Marksman_B",
 					"PLAYERUNIT_10" : "AT_Soldier_Desert_Medic_B"
 				}
@@ -107,7 +107,7 @@
 					"PLAYERUNIT_5" : "AT_Soldier_Jungle_GL_B",
 					"PLAYERUNIT_6" : "AT_Soldier_Jungle_AR_B",
 					"PLAYERUNIT_7" : "AT_Soldier_Jungle_LAT_B",
-					"PLAYERUNIT_8" : "AT_Soldier_Jungle_Explosives_B",
+					"PLAYERUNIT_8" : "AT_Soldier_Jungle_Medic_B",
 					"PLAYERUNIT_9" : "AT_Soldier_Jungle_Marksman_B",
 					"PLAYERUNIT_10" : "AT_Soldier_Jungle_Medic_B"
 				}
@@ -127,7 +127,7 @@
 					"PLAYERUNIT_5" : "AT_Soldier_Arctic_GL_B",
 					"PLAYERUNIT_6" : "AT_Soldier_Arctic_AR_B",
 					"PLAYERUNIT_7" : "AT_Soldier_Arctic_LAT_B",
-					"PLAYERUNIT_8" : "AT_Soldier_Arctic_Explosives_B",
+					"PLAYERUNIT_8" : "AT_Soldier_Arctic_Medic_B",
 					"PLAYERUNIT_9" : "AT_Soldier_Arctic_Marksman_B",
 					"PLAYERUNIT_10" : "AT_Soldier_Arctic_Medic_B"
 				}
@@ -147,7 +147,7 @@
 					"PLAYERUNIT_5" : "AT_Soldier_Woodland_GL_B",
 					"PLAYERUNIT_6" : "AT_Soldier_Woodland_AR_B",
 					"PLAYERUNIT_7" : "AT_Soldier_Woodland_LAT_B",
-					"PLAYERUNIT_8" : "AT_Soldier_Woodland_Explosives_B",
+					"PLAYERUNIT_8" : "AT_Soldier_Woodland_Medic_B",
 					"PLAYERUNIT_9" : "AT_Soldier_Woodland_Marksman_B",
 					"PLAYERUNIT_10" : "AT_Soldier_Woodland_Medic_B"
 				}
@@ -167,7 +167,7 @@
 					"PLAYERUNIT_5" : "AT_Soldier_Tiger_GL_B",
 					"PLAYERUNIT_6" : "AT_Soldier_Tiger_AR_B",
 					"PLAYERUNIT_7" : "AT_Soldier_Tiger_LAT_B",
-					"PLAYERUNIT_8" : "AT_Soldier_Tiger_Explosives_B",
+					"PLAYERUNIT_8" : "AT_Soldier_Tiger_Medic_B",
 					"PLAYERUNIT_9" : "AT_Soldier_Tiger_Marksman_B",
 					"PLAYERUNIT_10" : "AT_Soldier_Tiger_Medic_B"
 				}
@@ -187,7 +187,7 @@
 					"PLAYERUNIT_5" : "rhsusf_usmc_marpat_wd_grenadier",
 					"PLAYERUNIT_6" : "rhsusf_usmc_marpat_wd_machinegunner",
 					"PLAYERUNIT_7" : "rhsusf_usmc_marpat_wd_javelin",
-					"PLAYERUNIT_8" : "rhsusf_usmc_marpat_wd_rifleman",
+					"PLAYERUNIT_8" : "rhsusf_navy_marpat_wd_medic",
 					"PLAYERUNIT_9" : "rhsusf_usmc_marpat_wd_machinegunner_ass",
 					"PLAYERUNIT_10" : "rhsusf_navy_marpat_wd_medic"
 				}
@@ -207,7 +207,7 @@
 					"PLAYERUNIT_5" : "rhsusf_army_ucp_grenadier",
 					"PLAYERUNIT_6" : "rhsusf_army_ucp_machinegunner",
 					"PLAYERUNIT_7" : "rhsusf_army_ucp_javelin",
-					"PLAYERUNIT_8" : "rhsusf_army_ucp_riflemanl",
+					"PLAYERUNIT_8" : "rhsusf_army_ucp_medic",
 					"PLAYERUNIT_9" : "rhsusf_army_ucp_machinegunnera",
 					"PLAYERUNIT_10" : "rhsusf_army_ucp_medic"
 				}
@@ -227,7 +227,7 @@
 					"PLAYERUNIT_5" : "rhsusf_usmc_marpat_wd_grenadier",
 					"PLAYERUNIT_6" : "rhsusf_usmc_marpat_wd_machinegunner",
 					"PLAYERUNIT_7" : "rhsusf_usmc_marpat_wd_javelin",
-					"PLAYERUNIT_8" : "rhsusf_usmc_marpat_wd_rifleman",
+					"PLAYERUNIT_8" : "rhsusf_navy_marpat_wd_medic",
 					"PLAYERUNIT_9" : "rhsusf_usmc_marpat_wd_machinegunner_ass",
 					"PLAYERUNIT_10" : "rhsusf_navy_marpat_wd_medic"
 				}
@@ -247,7 +247,7 @@
 					"PLAYERUNIT_5" : "rhsusf_usmc_marpat_wd_grenadier",
 					"PLAYERUNIT_6" : "rhsusf_usmc_marpat_wd_machinegunner",
 					"PLAYERUNIT_7" : "rhsusf_usmc_marpat_wd_javelin",
-					"PLAYERUNIT_8" : "rhsusf_usmc_marpat_wd_rifleman",
+					"PLAYERUNIT_8" : "rhsusf_navy_marpat_wd_medic",
 					"PLAYERUNIT_9" : "rhsusf_usmc_marpat_wd_machinegunner_ass",
 					"PLAYERUNIT_10" : "rhsusf_navy_marpat_wd_medic"
 				}
@@ -267,7 +267,7 @@
 					"PLAYERUNIT_5" : "rhsusf_army_ucp_grenadier",
 					"PLAYERUNIT_6" : "rhsusf_army_ucp_machinegunner",
 					"PLAYERUNIT_7" : "rhsusf_army_ucp_javelin",
-					"PLAYERUNIT_8" : "rhsusf_army_ucp_riflemanl",
+					"PLAYERUNIT_8" : "rhsusf_army_ucp_medic",
 					"PLAYERUNIT_9" : "rhsusf_army_ucp_machinegunnera",
 					"PLAYERUNIT_10" : "rhsusf_army_ucp_medic"
 				}
@@ -287,7 +287,7 @@
 					"PLAYERUNIT_5" : "rhsusf_usmc_marpat_wd_grenadier",
 					"PLAYERUNIT_6" : "rhsusf_usmc_marpat_wd_machinegunner",
 					"PLAYERUNIT_7" : "rhsusf_usmc_marpat_wd_javelin",
-					"PLAYERUNIT_8" : "rhsusf_usmc_marpat_wd_rifleman",
+					"PLAYERUNIT_8" : "rhsusf_navy_marpat_wd_medic",
 					"PLAYERUNIT_9" : "rhsusf_usmc_marpat_wd_machinegunner_ass",
 					"PLAYERUNIT_10" : "rhsusf_navy_marpat_wd_medic"
 				}
@@ -307,7 +307,7 @@
 					"PLAYERUNIT_5" : "rhsusf_usmc_marpat_wd_grenadier",
 					"PLAYERUNIT_6" : "rhsusf_usmc_marpat_wd_machinegunner",
 					"PLAYERUNIT_7" : "rhsusf_usmc_marpat_wd_javelin",
-					"PLAYERUNIT_8" : "rhsusf_usmc_marpat_wd_rifleman",
+					"PLAYERUNIT_8" : "rhsusf_navy_marpat_wd_medic",
 					"PLAYERUNIT_9" : "rhsusf_usmc_marpat_wd_machinegunner_ass",
 					"PLAYERUNIT_10" : "rhsusf_navy_marpat_wd_medic"
 				}
@@ -327,7 +327,7 @@
 					"PLAYERUNIT_5" : "rhsusf_usmc_marpat_wd_grenadier",
 					"PLAYERUNIT_6" : "rhsusf_usmc_marpat_wd_machinegunner",
 					"PLAYERUNIT_7" : "rhsusf_usmc_marpat_wd_javelin",
-					"PLAYERUNIT_8" : "rhsusf_usmc_marpat_wd_rifleman",
+					"PLAYERUNIT_8" : "rhsusf_navy_marpat_wd_medic",
 					"PLAYERUNIT_9" : "rhsusf_usmc_marpat_wd_machinegunner_ass",
 					"PLAYERUNIT_10" : "rhsusf_navy_marpat_wd_medic"
 				}
@@ -347,7 +347,7 @@
 					"PLAYERUNIT_5" : "rhsusf_army_ucp_grenadier",
 					"PLAYERUNIT_6" : "rhsusf_army_ucp_machinegunner",
 					"PLAYERUNIT_7" : "rhsusf_army_ucp_javelin",
-					"PLAYERUNIT_8" : "rhsusf_army_ucp_riflemanl",
+					"PLAYERUNIT_8" : "rhsusf_army_ucp_medic",
 					"PLAYERUNIT_9" : "rhsusf_army_ucp_machinegunnera",
 					"PLAYERUNIT_10" : "rhsusf_army_ucp_medic"
 				}
@@ -367,7 +367,7 @@
 					"PLAYERUNIT_5" : "rhsusf_usmc_marpat_wd_grenadier",
 					"PLAYERUNIT_6" : "rhsusf_usmc_marpat_wd_machinegunner",
 					"PLAYERUNIT_7" : "rhsusf_usmc_marpat_wd_javelin",
-					"PLAYERUNIT_8" : "rhsusf_usmc_marpat_wd_rifleman",
+					"PLAYERUNIT_8" : "rhsusf_navy_marpat_wd_medic",
 					"PLAYERUNIT_9" : "rhsusf_usmc_marpat_wd_machinegunner_ass",
 					"PLAYERUNIT_10" : "rhsusf_navy_marpat_wd_medic"
 				}
@@ -407,7 +407,7 @@
 					"PLAYERUNIT_5" : "rhs_vdv_flora_grenadier",
 					"PLAYERUNIT_6" : "rhs_vdv_flora_machinegunner",
 					"PLAYERUNIT_7" : "rhs_vdv_flora_at",
-					"PLAYERUNIT_8" : "rhs_vdv_flora_rifleman",
+					"PLAYERUNIT_8" : "rhs_vdv_flora_medic",
 					"PLAYERUNIT_9" : "rhs_vdv_flora_machinegunner_assistant",
 					"PLAYERUNIT_10" : "rhs_vdv_flora_medic"
 				}
@@ -427,7 +427,7 @@
 					"PLAYERUNIT_5" : "rhs_vdv_des_grenadier",
 					"PLAYERUNIT_6" : "rhs_vdv_des_machinegunner",
 					"PLAYERUNIT_7" : "rhs_vdv_des_at",
-					"PLAYERUNIT_8" : "rhs_vdv_des_rifleman",
+					"PLAYERUNIT_8" : "rhs_vdv_des_medic",
 					"PLAYERUNIT_9" : "rhs_vdv_des_machinegunner_assistant",
 					"PLAYERUNIT_10" : "rhs_vdv_des_medic"
 				}
@@ -447,7 +447,7 @@
 					"PLAYERUNIT_5" : "CUP_B_GER_Soldier_AA",
 					"PLAYERUNIT_6" : "CUP_B_Ger_Soldier_MG",
 					"PLAYERUNIT_7" : "CUP_B_GER_Soldier_AT",
-					"PLAYERUNIT_8" : "CUP_B_GER_Soldier",
+					"PLAYERUNIT_8" : "CUP_B_GER_Medic",
 					"PLAYERUNIT_9" : "CUP_B_GER_Soldier_Ammo",
 					"PLAYERUNIT_10" : "CUP_B_GER_Medic"
 				}
@@ -467,7 +467,7 @@
 					"PLAYERUNIT_5" : "CUP_B_USMC_Soldier_AA",
 					"PLAYERUNIT_6" : "CUP_B_USMC_Soldier_MG",
 					"PLAYERUNIT_7" : "CUP_B_USMC_Soldier_AT",
-					"PLAYERUNIT_8" : "CUP_B_USMC_Soldier",
+					"PLAYERUNIT_8" : "CUP_B_USMC_Medic",
 					"PLAYERUNIT_9" : "CUP_B_USMC_Soldier_AR",
 					"PLAYERUNIT_10" : "CUP_B_USMC_Medic"
 				}
@@ -487,7 +487,7 @@
 					"PLAYERUNIT_5" : "CUP_B_USMC_Soldier_AA",
 					"PLAYERUNIT_6" : "CUP_B_USMC_Soldier_MG",
 					"PLAYERUNIT_7" : "CUP_B_USMC_Soldier_AT",
-					"PLAYERUNIT_8" : "CUP_B_USMC_Soldier",
+					"PLAYERUNIT_8" : "CUP_B_USMC_Medic",
 					"PLAYERUNIT_9" : "CUP_B_USMC_Soldier_AR",
 					"PLAYERUNIT_10" : "CUP_B_USMC_Medic"
 				}
@@ -507,7 +507,7 @@
 					"PLAYERUNIT_5" : "CUP_O_sla_Soldier_AA",
 					"PLAYERUNIT_6" : "CUP_O_sla_Soldier_MG",
 					"PLAYERUNIT_7" : "CUP_O_sla_Soldier_AT",
-					"PLAYERUNIT_8" : "CUP_O_sla_Soldier_AAT",
+					"PLAYERUNIT_8" : "CUP_O_sla_Medic",
 					"PLAYERUNIT_9" : "CUP_O_sla_Soldier",
 					"PLAYERUNIT_10" : "CUP_O_sla_Medic"
 				}
@@ -527,7 +527,7 @@
 					"PLAYERUNIT_5" : "CUP_O_RU_Soldier_AA",
 					"PLAYERUNIT_6" : "CUP_O_RU_Soldier_AR",
 					"PLAYERUNIT_7" : "CUP_O_RU_Soldier_AT",
-					"PLAYERUNIT_8" : "CUP_O_RU_Soldier_MG",
+					"PLAYERUNIT_8" : "CUP_O_RU_Medic",
 					"PLAYERUNIT_9" : "CUP_O_RU_Soldier",
 					"PLAYERUNIT_10" : "CUP_O_RU_Medic"
 				}
@@ -547,7 +547,7 @@
 					"PLAYERUNIT_5" : "CUP_O_RU_Soldier_AA",
 					"PLAYERUNIT_6" : "CUP_O_RU_Soldier_AR",
 					"PLAYERUNIT_7" : "CUP_O_RU_Soldier_AT",
-					"PLAYERUNIT_8" : "CUP_O_RU_Soldier_MG",
+					"PLAYERUNIT_8" : "CUP_O_RU_Medic",
 					"PLAYERUNIT_9" : "CUP_O_RU_Soldier",
 					"PLAYERUNIT_10" : "CUP_O_RU_Medic"
 				}
@@ -567,7 +567,7 @@
 					"PLAYERUNIT_5" : "CUP_O_RU_Soldier_AA",
 					"PLAYERUNIT_6" : "CUP_O_RU_Soldier_AR",
 					"PLAYERUNIT_7" : "CUP_O_RU_Soldier_AT",
-					"PLAYERUNIT_8" : "CUP_O_RU_Soldier_MG",
+					"PLAYERUNIT_8" : "CUP_O_RU_Medic",
 					"PLAYERUNIT_9" : "CUP_O_RU_Soldier",
 					"PLAYERUNIT_10" : "CUP_O_RU_Medic"
 				}
@@ -587,7 +587,7 @@
 					"PLAYERUNIT_5" : "B_mas_afr_Soldier_GL_F",
 					"PLAYERUNIT_6" : "B_mas_afr_soldier_AR_F",
 					"PLAYERUNIT_7" : "B_mas_afr_soldier_LAT_F",
-					"PLAYERUNIT_8" : "B_mas_afr_Soldier_AMM_F",
+					"PLAYERUNIT_8" : "B_mas_afr_medic_F",
 					"PLAYERUNIT_9" : "B_mas_afr_soldier_M_F",
 					"PLAYERUNIT_10" : "B_mas_afr_medic_F"
 				}
@@ -607,7 +607,7 @@
 					"PLAYERUNIT_5" : "LIB_SOV_mgunner",
 					"PLAYERUNIT_6" : "LIB_SOV_lieutenant",
 					"PLAYERUNIT_7" : "LIB_SOV_assault_smgunner",
-					"PLAYERUNIT_8" : "LIB_SOV_scout_smgunner",
+					"PLAYERUNIT_8" : "LIB_SOV_medic",
 					"PLAYERUNIT_9" : "LIB_SOV_scout_sniper",
 					"PLAYERUNIT_10" : "LIB_SOV_medic"
 				}
@@ -627,7 +627,7 @@
 					"PLAYERUNIT_5" : "LIB_SOV_mgunner",
 					"PLAYERUNIT_6" : "LIB_SOV_lieutenant",
 					"PLAYERUNIT_7" : "LIB_SOV_assault_smgunner",
-					"PLAYERUNIT_8" : "LIB_SOV_scout_smgunner",
+					"PLAYERUNIT_8" : "LIB_SOV_medic",
 					"PLAYERUNIT_9" : "LIB_SOV_scout_sniper",
 					"PLAYERUNIT_10" : "LIB_SOV_medic"
 				}
