@@ -76,6 +76,38 @@ call compile preprocessFile "Scripts\AT\dronehack_init.sqf";
 [] call A3E_fnc_addUserActions;
 if !(isClass(configFile >> "CfgPatches" >> "ACE_Medical")) then { call ATR_FNC_ReviveInit; };
 
+if(!isNil "tft_main_group")
+{
+    player joinSilent ([] call A3E_fnc_GetPlayerGroup);
+};
+
+_placed = false;
+_players = [] call A3E_fnc_GetPlayers;
+_players deleteAt (_players find player); 
+while{(count _players) > 0 && !_placed} do {
+    private _refPlayer = selectRandom _players;
+    private _refVehicle = vehicle _refPlayer;
+    if((_refVehicle != _refPlayer) && ((_refVehicle) emptyPositions "Commander">0 || (_refVehicle) emptyPositions "Driver">0 || (_refVehicle) emptyPositions "Gunner">0 || (_refVehicle) emptyPositions "Cargo">0)) then {
+        //Teleports the player remotely into the Vehicle, needs to be called local at player
+        [player,_refVehicle] remoteExec ["moveInAny", player]; 
+        sleep 0.5;
+        if(player in _refVehicle) then {
+            _placed = true;
+            diag_log format["Escape debug: %1 placed at %2 in cargo of vehicle.", name player, name _refPlayer];
+        } else {
+            diag_log format["Escape debug: Unable to playe %1 in cargo of %2", name player, name _refPlayer];
+            _placed = false;
+        };
+    };
+    //Remove the player to test another one
+    _players deleteAt (_players find _refPlayer); 				
+};
+if(!_placed) then {
+    player setpos [(A3E_StartPos select 0)+random 3.0-1.5,(A3E_StartPos select 1)+random 3.0-1.5,0];
+    player setdir (random 360);
+    diag_log format["Escape debug: %1 placed at prison.", name player];
+};
+
 sleep 1;
 
 player addMagazineGlobal "11Rnd_45ACP_Mag";

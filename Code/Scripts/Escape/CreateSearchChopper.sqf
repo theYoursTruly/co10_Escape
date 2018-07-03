@@ -52,6 +52,24 @@ _chopper lock 0;
 _chopper setVehicleVarName _vehicleVarName;
 _chopper call compile format ["%1=_this;", _vehicleVarName];
 
+{
+    _x setUnitRank "LIEUTENANT";
+    private _AISkill = 0.1;
+    switch (Param_EnemySkill) do {
+        case 0: { _AISkill = 0.05; };
+        case 1: { _AISkill = 0.1; };
+        case 2: { _AISkill = 0.15; };
+        case 3: { _AISkill = 0.2; };
+        case 4: { _AISkill = 0.25; };
+        default { _AISkill = 0.1; };
+    };
+    _x setskill _AISkill;
+    _x setskill ["spotdistance", _AISkill];
+    _x setskill ["aimingaccuracy", _AISkill]; 
+    _x setskill ["aimingshake", _AISkill]; 
+    _x setskill ["commanding", 0.8];
+} foreach crew _chopper;
+
 _group = createGroup _side;
 
 //"O_Pilot_F" createUnit [getMarkerPos "drn_searchChopperStartPosMarker", _group, "", (_minSkill + random (_maxSkill - _minSkill)), "LIEUTNANT"];

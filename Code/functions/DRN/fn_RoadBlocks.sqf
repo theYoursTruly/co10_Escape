@@ -178,6 +178,21 @@ _fnc_CreateRoadBlock = {
     
     {
         _x setUnitRank "LIEUTENANT";
+        private _AISkill = 0.1;
+        switch (Param_EnemySkill) do {
+            case 0: { _AISkill = 0.1; };
+            case 1: { _AISkill = 0.2; };
+            case 2: { _AISkill = 0.3; };
+            case 3: { _AISkill = 0.4; };
+            case 4: { _AISkill = 0.5; };
+            default { _AISkill = 0.2; };
+        };
+        _x setskill _AISkill;
+        _x setskill ["spotdistance", _AISkill];
+        _x setskill ["aimingaccuracy", _AISkill]; 
+        _x setskill ["aimingshake", _AISkill]; 
+        _x setskill ["spottime", _AISkill];
+        _x setskill ["commanding", 0.8];
     } foreach units _group;
     
     _units append (units _group);

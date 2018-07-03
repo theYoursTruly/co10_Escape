@@ -13,6 +13,22 @@ if(!(isNull _static)) then {
 	_unit = _group createUnit [_infantryType, getpos _static, [], 0, "FORM"];    
 	_unit assignAsGunner _static;
 	_unit moveInGunner _static;
+    
+    private _AISkill = 0.1;
+	switch (Param_EnemySkill) do {
+        case 0: { _AISkill = 0.1; };
+        case 1: { _AISkill = 0.2; };
+        case 2: { _AISkill = 0.3; };
+        case 3: { _AISkill = 0.4; };
+        case 4: { _AISkill = 0.5; };
+        default { _AISkill = 0.2; };
+    };
+	_unit setskill _AISkill;
+	_unit setskill ["spotdistance", _AISkill];
+	_unit setskill ["aimingaccuracy", _AISkill]; 
+	_unit setskill ["aimingshake", _AISkill]; 
+	_unit setskill ["spottime", _AISkill];
+	_unit setskill ["commanding", 0.8];
 } else {
 	_unit = objNull;
 };
