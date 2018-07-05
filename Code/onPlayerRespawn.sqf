@@ -76,10 +76,9 @@ call compile preprocessFile "Scripts\AT\dronehack_init.sqf";
 [] call A3E_fnc_addUserActions;
 if !(isClass(configFile >> "CfgPatches" >> "ACE_Medical")) then { call ATR_FNC_ReviveInit; };
 
-if(!isNil "tft_main_group")
-{
-    player joinSilent ([] call A3E_fnc_GetPlayerGroup);
-};
+private _group = [] call A3E_fnc_GetPlayerGroup;
+if(isNull _group) then { _group = tft_group; };
+if(!isNull _group) then { player joinSilent _group };
 
 _placed = false;
 _players = [] call A3E_fnc_GetPlayers;

@@ -174,7 +174,7 @@ ace_spectator_restrictModes = 1;    //follow unit only
 
 waituntil{sleep 0.1;!isNil("A3E_ParamsParsed")};
 AT_Revive_Camera = Param_ReviveView;
-
+tft_group = group player;
 
 [] spawn {
 	disableSerialization;
