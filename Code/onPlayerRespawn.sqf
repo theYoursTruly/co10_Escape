@@ -1,6 +1,5 @@
 player setCaptive true;
 hintSilent parseText("<t color='#00ff00' size='1.2'>Spawn protection ON</t>");
-player setPos getPos (leader group player);
 
 //BIS
 player unassignItem "ItemMap";
@@ -76,9 +75,12 @@ call compile preprocessFile "Scripts\AT\dronehack_init.sqf";
 [] call A3E_fnc_addUserActions;
 if !(isClass(configFile >> "CfgPatches" >> "ACE_Medical")) then { call ATR_FNC_ReviveInit; };
 
-private _group = [] call A3E_fnc_GetPlayerGroup;
-if(isNull _group) then { _group = tft_group; };
-if(!isNull _group) then { player joinSilent _group };
+if (name player == "Reconeh" && {isClass(configFile >> "CfgPatches" >> "female3_0X")}) then { 
+    [player, "X_female_02"] remoteExec ["setFace"]; 
+}; 
+
+[player] joinSilent tft_group;
+sleep 0.1;
 
 _placed = false;
 _players = [] call A3E_fnc_GetPlayers;
@@ -102,7 +104,7 @@ while{(count _players) > 0 && !_placed} do {
     _players deleteAt (_players find _refPlayer); 				
 };
 if(!_placed) then {
-    player setpos [(A3E_StartPos select 0)+random 3.0-1.5,(A3E_StartPos select 1)+random 3.0-1.5,0];
+    player setPos getPos (leader group player);
     player setdir (random 360);
     diag_log format["Escape debug: %1 placed at prison.", name player];
 };

@@ -1,157 +1,63 @@
-private ["_centerPos", "_rotateDir"];
-private ["_object", "_pos", "_dir"];
+// Object composition created and exported with Map Builder
+// See www.map-builder.info - Map Builder by NeoArmageddon
+// Call this script by [Position,Rotation] execVM "filename.sqf"
 
+private["_center","_rotation","_obj","_pos"];
+_center = param[0];
+_rotation = param[1];
+
+[_center,25] call a3e_fnc_cleanupTerrain;
+
+_fnc_rotatePos = {
+private ["_centerPos", "_pos", "_dir"];
+private ["_px", "_py", "_mpx", "_mpy", "_ma", "_rpx", "_rpy"];
 _centerPos = _this select 0;
-_rotateDir = _this select 1;
+_pos = _this select 1;
+_dir = _this select 2;
+    _px = _pos select 0;
+    _py = _pos select 1;
+    _mpx = _centerPos select 0;
+    _mpy = _centerPos select 1;
+    _ma = _dir;
+    _rpx = ( (_px - _mpx) * cos(_ma) ) + ( (_py - _mpy) * sin(_ma) ) + _mpx;
+    _rpy = (-(_px - _mpx) * sin(_ma) ) + ( (_py - _mpy) * cos(_ma) ) + _mpy;
+[_rpx, _rpy, (_pos select 2)];
+};
 
-_dir = _rotateDir;
+_pos = [_center,_center vectorAdd [-5.53674,-3.69824,0],_rotation] call _fnc_rotatePos;
+_obj = "Land_LampShabby_F" createvehicle _pos;
+_obj setVectorDirAndUp [[0.0183471,-0.999832,0],[0,-0,1]];
+_obj setdir ((getdir _obj) + _rotation);
+_obj setPosATL _pos;
 
-_pos = [(_centerPos select 0) - 4, (_centerPos select 1) - 6, 0];
-//_object = "Land_Wall_Tin_4" createVehicle _pos;
-_object = createVehicle ["Land_Wall_Tin_4", _pos, [], 0, "NONE"];
-_object setPos ([_centerPos, _pos, _rotateDir] call a3e_fnc_RotatePosition);
-_object setDir _dir;
+_pos = [_center,_center vectorAdd [-0.158936,-3.08484,0],_rotation] call _fnc_rotatePos;
+_obj = "Land_Metal_Shed_F" createvehicle _pos;
+_obj setVectorDirAndUp [[0.0183471,-0.999832,0],[0,-0,1]];
+_obj setdir ((getdir _obj) + _rotation);
+_obj setPosATL _pos;
 
+_pos = [_center,_center vectorAdd [1.2627,-3.60278,0],_rotation] call _fnc_rotatePos;
+_obj = "Land_Net_Fence_Gate_F" createvehicle _pos;
+_obj setVectorDirAndUp [[0.0348819,0.999391,0],[0,0,1]];
+_obj setdir ((getdir _obj) + _rotation);
+_obj setPosATL _pos;
 
-_pos = [(_centerPos select 0) - 0, (_centerPos select 1) - 6, 0];
-//_object = "Land_Wall_Tin_4" createVehicle _pos;
-_object = createVehicle ["Land_Wall_Tin_4", _pos, [], 0, "NONE"];
-_object setPos ([_centerPos, _pos, _rotateDir] call a3e_fnc_RotatePosition);
-_object setDir _dir;
+A3E_PrisonGateObject = _obj;
 
+_pos = [_center,_center vectorAdd [5.2926,-3.39038,0],_rotation] call _fnc_rotatePos;
+_obj = "Land_Loudspeakers_F" createvehicle _pos;
+_obj setVectorDirAndUp [[0.0183407,-0.999832,0],[0,-0,1]];
+_obj setdir ((getdir _obj) + _rotation);
+_obj setPosATL _pos;
 
-_pos = [(_centerPos select 0) + 4, (_centerPos select 1) - 6, 0];
-//_object = "Land_Wall_Tin_4" createVehicle _pos;
-_object = createVehicle ["Land_Wall_Tin_4", _pos, [], 0, "NONE"];
-_object setPos ([_centerPos, _pos, _rotateDir] call a3e_fnc_RotatePosition);
-_object setDir _dir;
-
-
-
-/*
-_pos = [(_centerPos select 0) + 6, (_centerPos select 1) - 8, 0];
-_object = "Land_Wall_Tin_4" createVehicle _pos;
-_object setPos ([_centerPos, _pos, _rotateDir] call a3e_fnc_RotatePosition);
-_object setDir _dir;
-*/
-
-_dir = 270 + _rotateDir;
-
-_pos = [(_centerPos select 0) + 6, (_centerPos select 1) - 4, 0];
-//_object = "Land_Wall_Tin_4" createVehicle _pos;
-_object = createVehicle ["Land_Wall_Tin_4", _pos, [], 0, "NONE"];
-_object setPos ([_centerPos, _pos, _rotateDir] call a3e_fnc_RotatePosition);
-_object setDir _dir;
-
-
-_pos = [(_centerPos select 0) + 6, (_centerPos select 1) - 0, 0];
-//_object = "Land_Wall_Tin_4" createVehicle _pos;
-_object = createVehicle ["Land_Wall_Tin_4", _pos, [], 0, "NONE"];
-_object setPos ([_centerPos, _pos, _rotateDir] call a3e_fnc_RotatePosition);
-_object setDir _dir;
-
-
-_pos = [(_centerPos select 0) + 6, (_centerPos select 1) + 4, 0];
-//_object = "Land_Wall_Tin_4" createVehicle _pos;
-_object = createVehicle ["Land_Wall_Tin_4", _pos, [], 0, "NONE"];
-_object setPos ([_centerPos, _pos, _rotateDir] call a3e_fnc_RotatePosition);
-_object setDir _dir;
-
-
-/*
-_pos = [(_centerPos select 0) + 8, (_centerPos select 1) + 6, 0];
-_object = "Land_Wall_Tin_4" createVehicle _pos;
-_object setPos ([_centerPos, _pos, _rotateDir] call a3e_fnc_RotatePosition);
-_object setDir _dir;
-*/
-
-_dir = 180 + _rotateDir;
-
-_pos = [(_centerPos select 0) - 4, (_centerPos select 1) + 6, 0];
-//_object = "Land_Wall_Tin_4" createVehicle _pos;
-_object = createVehicle ["Land_Wall_Tin_4", _pos, [], 0, "NONE"];
-_object setPos ([_centerPos, _pos, _rotateDir] call a3e_fnc_RotatePosition);
-_object setDir _dir;
-
-
-_pos = [(_centerPos select 0) - 0, (_centerPos select 1) + 6, 0];
-//_object = "Land_Wall_Tin_4" createVehicle _pos;
-_object = createVehicle ["Land_Wall_Tin_4", _pos, [], 0, "NONE"];
-_object setPos ([_centerPos, _pos, _rotateDir] call a3e_fnc_RotatePosition);
-_object setDir _dir;
-
-
-/*
-_pos = [(_centerPos select 0) + 4, (_centerPos select 1) + 8, 0];
-_object = "Land_Wall_Tin_4" createVehicle _pos;
-_object setPos ([_centerPos, _pos, _rotateDir] call a3e_fnc_RotatePosition);
-_object setDir _dir;
-*/
-
-// Bar Gate
-
-_pos = [(_centerPos select 0) + 4, (_centerPos select 1) + 6, 0];
-//_object = "Land_City_Gate_F" createVehicle _pos;
-_object = createVehicle ["Land_City_Gate_F", _pos, [], 0, "NONE"];
-_object setPos ([_centerPos, _pos, _rotateDir] call a3e_fnc_RotatePosition);
-_object setDir (_dir + 180);
-//_object addEventHandler ["AnimStateChanged", {hint "blah";drn_escapeHasStarted = true;publicVariable "drn_escapeHasStarted";}];
-_dir = 90 + _rotateDir;
-
-A3E_PrisonGateObject = _object;
-
-_pos = [(_centerPos select 0) - 6, (_centerPos select 1) - 4, 0];
-//_object = "Land_Wall_Tin_4" createVehicle _pos;
-_object = createVehicle ["Land_Wall_Tin_4", _pos, [], 0, "NONE"];
-_object setPos ([_centerPos, _pos, _rotateDir] call a3e_fnc_RotatePosition);
-_object setDir _dir;
-
-
-_pos = [(_centerPos select 0) - 6, (_centerPos select 1) - 0];
-//_object = "Land_Wall_Tin_4" createVehicle _pos;
-_object = createVehicle ["Land_Wall_Tin_4", _pos, [], 0, "NONE"];
-_object setPos ([_centerPos, _pos, _rotateDir] call a3e_fnc_RotatePosition);
-_object setDir _dir;
-
-
-_pos = [(_centerPos select 0) - 6, (_centerPos select 1) + 4, 0];
-//_object = "Land_Wall_Tin_4" createVehicle _pos;
-_object = createVehicle ["Land_Wall_Tin_4", _pos, [], 0, "NONE"];
-_object setPos ([_centerPos, _pos, _rotateDir] call a3e_fnc_RotatePosition);
-_object setDir _dir;
-
-
-/*
-_pos = [(_centerPos select 0) - 8, (_centerPos select 1) + 6, 0];
-_object = "Land_Wall_Tin_4" createVehicle _pos;
-_object setPos ([_centerPos, _pos, _rotateDir] call a3e_fnc_RotatePosition);
-_object setDir _dir;
-*/
-
-// Tunnor
-
-_dir = 90 + _rotateDir;
-
-_pos = [(_centerPos select 0) + 7, (_centerPos select 1) + 5, 0];
-//_object = "MetalBarrel_burning_F" createVehicle _pos;
-_object = createVehicle ["MetalBarrel_burning_F", _pos, [], 0, "NONE"];
-_object setPos ([_centerPos, _pos, _rotateDir] call a3e_fnc_RotatePosition);
-_object setDir _dir;
-
-_pos = [(_centerPos select 0) - 5, (_centerPos select 1) + 7, 0];
-//_object = "MetalBarrel_burning_F" createVehicle _pos;
-_object = createVehicle ["Land_Loudspeakers_F", _pos, [], 0, "NONE"];
-_object setPos ([_centerPos, _pos, _rotateDir] call a3e_fnc_RotatePosition);
-_object setDir _dir;
-
-A3E_PrisonLoudspeakerObject = _object;
+A3E_PrisonLoudspeakerObject = _obj;
 publicvariable "A3E_PrisonLoudspeakerObject";
-// Flag
 
-_dir = 90 + _rotateDir;
+_pos = [_center,_center vectorAdd [-4.48804,0.371826,0],_rotation] call _fnc_rotatePos;
+private _backpack = "B_AssaultPack_khk" createvehicle _pos;
+_backpack setVectorDirAndUp [[0,1,0],[0,0,1]];
+_backpack setdir ((getdir _backpack) + _rotation);
+_backpack setPosATL _pos;
 
-_pos = [(_centerPos select 0) + 7, (_centerPos select 1) + 5, 0];
-//_object = "Flag_AAD_F" createVehicle _pos;
-_object = createVehicle ["Flag_AAF_F", _pos, [], 0, "NONE"];
-_object setPos ([_centerPos, _pos, _rotateDir] call a3e_fnc_RotatePosition);
-_object setDir _dir;
+_backpack;
+

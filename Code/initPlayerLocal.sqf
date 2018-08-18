@@ -166,6 +166,10 @@ if (isClass(configFile >> "CfgPatches" >> "ACE_common")) then {
     if (str player in ["p9","p10"]) then {player setVariable ["ACE_medical_medicClass", 2, true];};
 };
 
+if (name player == "Reconeh" && {isClass(configFile >> "CfgPatches" >> "female3_0X")}) then { 
+    [player, "X_female_02"] remoteExec ["setFace"]; 
+}; 
+
 ace_map_BFT_Enabled = false;
 ace_spectator_filterUnits = 2;      //playable only
 ace_spectator_filterSides = 1;      //friendly
