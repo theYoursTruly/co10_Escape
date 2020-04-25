@@ -18,14 +18,8 @@ AT_Revive_enableRespawn = false;
 AT_Revive_clearedDistance = 0;
 AT_Revive_Camera = 1;
 
-if(isClass(configFile >> "CfgPatches" >> "ACE_Medical")) then {
-    ace_medical_level = 1;
-    ace_medical_medicSetting = 1;
-    ace_medical_litterCleanUpDelay = 300;
-    ace_medical_playerDamageThreshold = 1.5;
-    ace_medical_painCoefficient = 1.2;
-} else {
-call ATR_FNC_ReviveInit;
+if(!isClass(configFile >> "CfgPatches" >> "ACE_Medical")) then {
+    call ATR_FNC_ReviveInit;
 };
 
 call compile preprocessFile "Scripts\AT\dronehack_init.sqf";
@@ -99,6 +93,12 @@ player assignItem "ItemRadio";
 player addItem "ItemWatch";
 player assignItem "ItemWatch";
 
+if (name player == "Reconeh" && {isClass(configFile >> "CfgPatches" >> "female3_0X")}) then { 
+    [player, "X_female_02"] remoteExec ["setFace"];
+    removeUniform player;
+    player forceAddUniform selectRandom ["B_FEM_NATO_M81", "B_FEM_NATO_M81_rolled"];
+}; 
+
 drn_fnc_Escape_DisableLeaderSetWaypoints = {
 	if (!visibleMap) exitwith {};
 	
@@ -131,9 +131,9 @@ if (isClass(configFile >> "CfgPatches" >> "ACE_Hearing")) then {
     player addItem "ACE_EarPlugs";
 };
 if (isClass(configFile >> "CfgPatches" >> "ACE_Medical")) then {
-    _ACE_Items = ["ACE_atropine","ACE_fieldDressing","ACE_elasticBandage","ACE_quikclot","ACE_bloodIV","ACE_bloodIV_500","ACE_bloodIV_250","ACE_bodyBag","ACE_epinephrine","ACE_morphine","ACE_packingBandage","ACE_personalAidKit","ACE_plasmaIV","ACE_plasmaIV_500","ACE_plasmaIV_250","ACE_salineIV","ACE_salineIV_500","ACE_salineIV_250","ACE_surgicalKit","ACE_tourniquet"];
+    _ACE_Items = ["ACE_atropine","ACE_splint","ACE_fieldDressing","ACE_elasticBandage","ACE_quikclot","ACE_bloodIV","ACE_bloodIV_500","ACE_bloodIV_250","ACE_bodyBag","ACE_epinephrine","ACE_morphine","ACE_packingBandage","ACE_personalAidKit","ACE_plasmaIV","ACE_plasmaIV_500","ACE_plasmaIV_250","ACE_salineIV","ACE_salineIV_500","ACE_salineIV_250","ACE_surgicalKit","ACE_tourniquet"];
     {player removeItems _x} forEach _ACE_Items;
-    if ( (missionnamespace getVariable ["ace_medical_level",2]) > 1 || (missionnamespace getVariable ["ace_medical_medicSetting",2]) > 1 ) then {
+    if ( (missionnamespace getVariable ["ace_medical_treatment_advancedBandages",0]) > 0 || (missionnamespace getVariable ["ace_medical_treatment_advancedMedication",false]) ) then {
         for "_i" from 1 to 4 do {player addItem "ACE_fieldDressing";};
         for "_i" from 1 to 4 do {player addItem "ACE_packingBandage";};
         for "_i" from 1 to 4 do    {player addItem "ACE_elasticBandage";};
@@ -149,8 +149,10 @@ if (isClass(configFile >> "CfgPatches" >> "ACE_Medical")) then {
             for "_i" from 1 to 2 do {player addItem "ACE_salineIV";};
         };
         for "_i" from 1 to 2 do {player addItem "ACE_tourniquet";};
+        for "_i" from 1 to 2 do {player addItem "ACE_splint";};
     } else {
         for "_i" from 1 to 10 do {player addItem "ACE_fieldDressing";};
+        for "_i" from 1 to 2 do {player addItem "ACE_splint";};
         if !(str player == "p10") then {
             for "_i" from 1 to 2 do {player addItem "ACE_morphine";};
             for "_i" from 1 to 2 do {player addItem "ACE_epinephrine";};
@@ -163,18 +165,8 @@ if (isClass(configFile >> "CfgPatches" >> "ACE_Medical")) then {
 };
 if (isClass(configFile >> "CfgPatches" >> "ACE_common")) then {
     if (str player in ["p3","p4"]) then {player setVariable ["ACE_isEOD",true];player setVariable ["ACE_isEngineer",true];};
-    if (str player in ["p9","p10"]) then {player setVariable ["ACE_medical_medicClass", 2, true];};
+    if (str player in ["p9","p10"]) then {player setVariable ["ACE_medical_medicClass", 1, true];};
 };
-
-if (name player == "Reconeh" && {isClass(configFile >> "CfgPatches" >> "female3_0X")}) then { 
-    [player, "X_female_02"] remoteExec ["setFace"]; 
-}; 
-
-ace_map_BFT_Enabled = false;
-ace_spectator_filterUnits = 2;      //playable only
-ace_spectator_filterSides = 1;      //friendly
-ace_spectator_restrictModes = 1;    //follow unit only
-
 
 waituntil{sleep 0.1;!isNil("A3E_ParamsParsed")};
 AT_Revive_Camera = Param_ReviveView;

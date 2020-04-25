@@ -129,10 +129,10 @@ _object = createVehicle ["Flag_AAF_F", _pos, [], 0, "NONE"];
 _object setPos ([_centerPos, _pos, _rotateDir] call a3e_fnc_RotatePosition);
 _object setDir _dir;
 
-_pos = [(_centerPos select 0) + 7, (_centerPos select 1) + 5, 0];
+_pos = [_centerPos select 0, _centerPos select 1, 0];
 //_object = "Flag_AAD_F" createVehicle _pos;
 _object = createVehicle ["B_AssaultPack_khk", _pos, [], 0, "NONE"];
 _object setPos ([_centerPos, _pos, _rotateDir] call a3e_fnc_RotatePosition);
 _object setDir _dir;
 
-_backpack;
+_object;

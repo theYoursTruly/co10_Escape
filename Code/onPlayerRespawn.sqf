@@ -77,6 +77,8 @@ if !(isClass(configFile >> "CfgPatches" >> "ACE_Medical")) then { call ATR_FNC_R
 
 if (name player == "Reconeh" && {isClass(configFile >> "CfgPatches" >> "female3_0X")}) then { 
     [player, "X_female_02"] remoteExec ["setFace"]; 
+    removeUniform player;
+    player forceAddUniform selectRandom ["B_FEM_NATO_M81", "B_FEM_NATO_M81_rolled"];
 }; 
 
 [player] joinSilent tft_group;
@@ -124,15 +126,10 @@ if (isClass(configFile >> "CfgPatches" >> "ACE_Hearing")) then {
     player addItem "ACE_EarPlugs";
 };
 
-ace_map_BFT_Enabled = false;
-ace_spectator_filterUnits = 2;      //playable only
-ace_spectator_filterSides = 1;      //friendly
-ace_spectator_restrictModes = 1;    //follow unit only
-
 if (isClass(configFile >> "CfgPatches" >> "ACE_Medical")) then {
-    _ACE_Items = ["ACE_atropine","ACE_fieldDressing","ACE_elasticBandage","ACE_quikclot","ACE_bloodIV","ACE_bloodIV_500","ACE_bloodIV_250","ACE_bodyBag","ACE_epinephrine","ACE_morphine","ACE_packingBandage","ACE_personalAidKit","ACE_plasmaIV","ACE_plasmaIV_500","ACE_plasmaIV_250","ACE_salineIV","ACE_salineIV_500","ACE_salineIV_250","ACE_surgicalKit","ACE_tourniquet"];
+    _ACE_Items = ["ACE_atropine","ACE_fieldDressing","ACE_splint","ACE_elasticBandage","ACE_quikclot","ACE_bloodIV","ACE_bloodIV_500","ACE_bloodIV_250","ACE_bodyBag","ACE_epinephrine","ACE_morphine","ACE_packingBandage","ACE_personalAidKit","ACE_plasmaIV","ACE_plasmaIV_500","ACE_plasmaIV_250","ACE_salineIV","ACE_salineIV_500","ACE_salineIV_250","ACE_surgicalKit","ACE_tourniquet"];
     {player removeItems _x} forEach _ACE_Items;
-    if ( (missionnamespace getVariable ["ace_medical_level",2]) > 1 || (missionnamespace getVariable ["ace_medical_medicSetting",2]) > 1 ) then {
+    if ( (missionnamespace getVariable ["ace_medical_treatment_advancedBandages",0]) > 0 || (missionnamespace getVariable ["ace_medical_treatment_advancedMedication",false]) ) then {
         for "_i" from 1 to 4 do {player addItem "ACE_fieldDressing";};
         for "_i" from 1 to 4 do {player addItem "ACE_packingBandage";};
         for "_i" from 1 to 4 do    {player addItem "ACE_elasticBandage";};
@@ -162,8 +159,8 @@ if (isClass(configFile >> "CfgPatches" >> "ACE_Medical")) then {
 };
 
 if (isClass(configFile >> "CfgPatches" >> "ACE_common")) then {
-    if (str player in ["p3", "p4"]) then {player setVariable ["ACE_isEOD",true];player setVariable ["ACE_isEngineer",true];};
-    if (str player in ["p9", "p10"]) then {player setVariable ["ACE_medical_medicClass", 2, true];};
+    if (str player in ["p3", "p4"]) then {player setVariable ["ACE_isEOD",true]; player setVariable ["ACE_isEngineer",true];};
+    if (str player in ["p9", "p10"]) then {player setVariable ["ACE_medical_medicClass", 1, true];};
 };
 
 sleep 5;
